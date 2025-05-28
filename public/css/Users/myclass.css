@@ -1,0 +1,142 @@
+.dv-content {
+    padding: 10px;
+}
+
+.dv-content .dv-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.dv-content .dv-box {
+    background-color: white;
+    padding: 10px;
+}
+
+.dv-content .dv-box.filter {
+    margin-top: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.dv-content .dv-box.filter .box-btn {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.8);
+}
+
+.dv-content .dv-box.filter .box-btn button {
+    padding: 5px 10px;
+    border: none;
+    background-color: white;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid rgba(192, 192, 192, 0.8);
+    border-bottom: 0px;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.2 linear;
+}
+
+.dv-content .dv-box.filter .box-btn button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.dv-content .dv-box.show-class {
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dv-content .dv-box.show-class .box-class {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: url('../../img/default_class.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex: 1 1 calc(100% / 1 - 10px);
+}
+
+@media (min-width: 500px) {
+    .dv-content .dv-box.show-class .box-class {
+        flex: 1 1 calc(100% / 2 - 10px);
+        max-width: calc(99% / 2);
+    }
+}
+
+@media (min-width: 1200px) {
+    .dv-content .dv-box.show-class .box-class {
+        flex: 1 1 calc(100% / 3 - 10px);
+        max-width: calc(98% / 3);
+    }
+}
+
+.dv-content .dv-box.show-class .box-class .classname {
+    font-size: 20px;
+    font-weight: bold;
+    align-self: center;
+    color: green;
+}
+
+.dv-content .dv-box.show-class .box-class>p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.dv-content .dv-box.show-class .box-class>p>span {
+    font-weight: normal;
+}
+
+.dv-content .dv-box.show-class .box-class.nojoin .stt>span {
+    color: red;
+}
+
+.dv-content .dv-box.show-class .box-class.pending .stt>span {
+    color: rgb(255, 115, 0)
+}
+
+.dv-content .dv-box.show-class .box-class.pending>button {
+    background-color: red;
+    border: none;
+    color: white;
+}
+
+.dv-content .dv-box.show-class .box-class.pending>button:hover {
+    background-color: rgb(175, 0, 0);
+}
+
+.dv-content .dv-box.show-class .box-class.joined .stt>span {
+    color: green;
+}
+
+.btn_quiz_pro{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.btn_quiz_pro a{
+    display: block;
+    flex: 1;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+}
+
+.btn_quiz_pro a:hover{
+    background-color: rgb(0, 107, 0);
+}
+
+.hidden{
+    display: none;
+}

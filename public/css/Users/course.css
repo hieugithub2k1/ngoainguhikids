@@ -1,0 +1,314 @@
+
+/* common */
+
+:root{
+    --mb-primary-color: #E60026;
+}
+
+.main{
+    background-color: rgb(241, 241, 241);
+}
+
+.btn{
+    --btn-h: 35px;
+    display: block;
+    width: var(--w,auto);
+    text-align: center;
+    padding: 0 10px;
+    line-height: var(--btn-h);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.btn.btn-primary{
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn.btn-primary:hover{
+    color: white;
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn.btn-danger{
+    color: white;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn.btn-danger:hover{
+    color: white;
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.fromGroup{
+    /* background-color: violet; */
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.fromGroup .formLabel{
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.fromGroup .formInput{
+    --border-color: #d4d4d4;
+  background: transparent;
+  box-shadow: 0 0 1px var(--border-color);
+  border: 1px solid var(--border-color);
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  height: var(--btn-h, auto);
+}
+
+/*  */
+
+.content{
+    padding: 10px;
+    z-index: 0;
+}
+
+.content .addCourse{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.content .addCourse .addCourse-box{
+    display: none;
+    position: relative;
+    transition: padding-bottom 0.2s linear;
+}
+
+.content .addCourse .addCourse-box .addCourse-box-btn-close{
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+}
+.content .addCourse .addCourse-box:hover{
+    padding-bottom: 20px;
+}
+
+.content .addCourse .addCourse-box:hover .addCourse-box-btn-close{
+    display: block;
+    animation: fadeIn-opacity 0.3s linear;
+}
+
+.content .addCourse .addCourse-form{
+    --btn-h: 35px;
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.content .addCourse .addCourse-form .fromGroup{
+    flex: 1;
+}
+
+.content .addCourse.show .btn-addCourse{
+    display: none;
+}
+
+.content .addCourse.show .addCourse-box{
+    display: block;
+    animation: fadeIn-top 0.3s linear;
+}
+
+.content .listCourse{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.content .listCourse .listCourse-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* width: calc(); */
+}
+
+.table-course{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.table-course thead tr{
+    background-color: var(--mb-primary-color);
+    color: white;
+    text-align: left;
+}
+
+.table-course th,
+.table-course td{
+    padding: 10px;
+}
+
+.table-course tbody tr{
+    border-bottom: 1px solid #ccc;
+}
+.table-course tbody tr:last-of-type{
+    border-bottom: 2px solid var(--mb-primary-color); 
+}
+
+.table-course .actions{
+    display: flex;
+    gap: 15px;
+}
+
+.table-course .actions .btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.listCourse-pagination{
+    margin-top: 10px;
+}
+
+.listCourse-pagination .listCourse-pagination-ul{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.listCourse-pagination .listCourse-pagination-ul li a{
+    display: block;
+    padding: 5px 10px;
+    /* background-color: #0056b3; */
+    color: black;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: all 0.2s linear;
+}
+
+.listCourse-pagination .listCourse-pagination-ul li a:hover{
+    background-color: #0056b3;
+    color: white;
+}
+
+.listCourse-pagination .listCourse-pagination-ul li.active a{
+    background-color: #0056b3;
+    color: white;
+}
+
+.course-overllay-del,
+.course-overllay-edit{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(204, 204, 204,0.4);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    display: none;
+}
+
+.course-overllay-del .course-overllay-del-box, 
+.course-overllay-edit .course-overllay-edit-box{
+    padding: 20px;
+    position: absolute;
+    --btn-h: 35px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    max-width: 600px;
+}
+
+.formEdit{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    width: 100%;
+    animation: fadeIn-top 0.3s linear;
+    position: relative;
+}
+
+.formEdit .btn-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    transform: translate(50%,-50%);
+    width: fit-content;
+}
+
+
+.formDel{
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    /* justify-content: center;
+    align-items: center; */
+    border-radius: 10px;
+}
+
+.formDel>p{
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+    text-align: center;
+}
+
+.formDel .btn-group{
+    --w: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.formDel .btn-group .btn{
+    /* --w: 100%; */
+}
+
+
+@media (max-width: 450px){
+    .formEdit{
+        --w: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.formEdit .fromGroup{
+    flex: 1;
+}
+
+@keyframes fadeIn-opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn-top {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

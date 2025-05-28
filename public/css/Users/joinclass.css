@@ -1,0 +1,138 @@
+    .dv-content {
+        padding: 10px;
+    }
+
+    .dv-content .dv-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .dv-content .dv-box {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .dv-content .dv-box.filter {
+        margin-top: 10px;
+    }
+
+    .dv-content .dv-box.filter form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 10px;
+    }
+
+    .dv-content .dv-box.filter form >*{
+        flex: 1 1 100%;
+    }
+
+    .dv-content .dv-box.filter form>.form-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .dv-content .dv-box.filter form>.form-group label {
+        flex-basis: 20%;
+    }
+
+    @media (min-width: 500px) {
+
+        .dv-content .dv-box.filter form>.form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            align-items: start;
+            
+        }
+
+        .dv-content .dv-box.filter form> button{
+            flex: 0;
+            flex-basis: fit-content;
+        }
+    }
+
+    .dv-content .dv-box.filter form .form-group label {
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .dv-content .dv-box.filter form .form-group select {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333;
+        outline: none;
+        width: 100%;
+        background-color: white;
+    }
+
+    .dv-content .dv-box.show-class {
+        margin-top: 10px;
+    }
+
+        .dv-content .dv-box.show-class {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .dv-content .dv-box.show-class .box-class {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: url('../../img/default_class.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            flex: 1 1 calc(100% / 1 - 10px);
+        }
+
+        .dv-content .dv-box.show-class .box-class .classname {
+            font-size: 20px;
+            font-weight: bold;
+            align-self: center;
+            color: green;
+        }
+
+        .dv-content .dv-box.show-class .box-class>p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .dv-content .dv-box.show-class .box-class>p>span {
+            font-weight: normal;
+        }
+
+        .dv-content .dv-box.show-class .box-class.nojoin .stt>span {
+            color: red;
+        }
+
+        .dv-content .dv-box.show-class .box-class.pending .stt>span {
+            color: rgb(255, 115, 0)
+        }
+
+        .dv-content .dv-box.show-class .box-class.pending>button {
+            background-color: red;
+            border: none;
+            color: white;
+        }
+
+        .dv-content .dv-box.show-class .box-class.pending>button:hover {
+            background-color: rgb(175, 0, 0);
+        }
+
+        .dv-content .dv-box.show-class .box-class.joined .stt>span {
+            color: green;
+        }

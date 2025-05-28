@@ -1,0 +1,238 @@
+.dv-content {
+    padding: 10px;
+}
+
+.dv-content-title {
+    font-size: 25px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dv-content-box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dv-content-box.box1 .courseName,
+.dv-content-box.box1 .className {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.dv-content-box.box1 .courseName span,
+.dv-content-box.box1 .className span {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.dv-content-box.box1 .box-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dv-content-box.box1 .box-progress .progress {
+    --score: 0%;
+    flex: 1;
+    height: 10px;
+    background-color: white;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 10px;
+    padding: 1.5px;
+    overflow: hidden;
+}
+
+.dv-content-box.box1 .box-progress .progress .progress_bar {
+    width: var(--score);
+    height: 100%;
+    background-color: green;
+    border-radius: 5px;
+}
+
+.dv-content-box.box2 {
+    margin-top: 10px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+}
+
+.dv-content-box.box2>* {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/*  */
+
+.chart-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chart-container .chart-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.chart-container .chart-title span {
+    font-weight: normal;
+    color: #868686;
+}
+
+.chart-container .chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.chart-container .bar {
+    position: relative;
+    --width: 0%;
+    width: 0;
+    background-color: rgba(187, 187, 187, 0.2);
+    border-radius: 2px;
+    text-align: right;
+    color: transparent;
+    padding-right: 10px;
+    transition: width 0.3s ease;
+    margin-bottom: 5px;
+    isolation: isolate;
+    animation: dv_grow 1s ease forwards;
+}
+
+.chart-container .bar>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    width: var(--width);
+    z-index: -1;
+    color: white;
+    border-radius: 2px;
+}
+
+.chart-container .bar.red>div {
+    color: red;
+}
+
+.chart-container .bar>div {
+    padding-right: 10px;
+}
+
+@keyframes dv_grow {
+    0% {
+        width: 0 !important;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.chart-container .bar-label {
+    margin-top: 5px;
+}
+
+.chart-container .bar-label.nomal {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.chart-container .bar-label.nomal:hover{
+    color: #007bff;
+}
+
+.chart-container .separator {
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px 0;
+}
+
+.chart-container .chart>div:last-child .separator {
+    display: none;
+}
+
+.box-overllay .progress-overllay{
+        position: fixed;
+        inset: 0;
+        background-color: rgba(216, 216, 216, 0.5);
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        animation: dv_fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes dv_fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .box-overllay .box-overllay-close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        
+    }
+
+    .box-overllay .box-overllay-close:hover svg{
+        color: red;
+    }
+
+    .box-overllay .box-overllay-close svg{
+       width: 35px;
+       height: 35px;
+    }
+
+    .box-overllay .progress-overllay-content{
+        background-color: white;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        overflow-y: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+
+    .box-overllay .progress-item.info>p{
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;;
+    }
+
+    .box-overllay .progress-item.info>p>span{
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .box-overllay .progress-item{
+        box-shadow: 0 0 5px rgb(141, 141, 141,0.8);
+        padding: 10px;
+        border-radius: 5px;
+    }

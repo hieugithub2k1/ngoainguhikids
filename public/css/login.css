@@ -1,0 +1,387 @@
+/* From Uiverse.io by JohnnyCSilva */ 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    border-bottom: 1px solid rgba(125, 125, 134,0.5);
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.header_swrap{
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 50px;
+}
+
+.header_div_logo{
+    height: 100%;
+}
+.header_div_logo img{
+    height: 100%;
+}
+
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    --w: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 20px;
+  padding-top: 10px;
+  width: var(--w);
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form button {
+  align-self: flex-end;
+}
+
+.container .title{
+    text-align: center;
+}
+
+.flex-column > label {
+  color: #151717;
+  font-weight: 600;
+}
+
+.inputForm {
+  border: 1.5px solid #ecedec;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+
+.input {
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputForm:focus-within {
+  border: 1.5px solid #2d79f3;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.flex-row > div > label {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+}
+
+.span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #2d79f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button-submit {
+  margin: 20px 0 10px 0;
+  background-color: #151717;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button-submit:hover {
+  background-color: #27292b;
+}
+
+.p {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #ededef;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  border: 1px solid #2d79f3;
+}
+
+.span_eye {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 5px;
+}
+
+.span_eye.active svg{
+    stroke: red;
+}
+
+
+.check_remember{
+  /* background-color: #971414; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.check_remember>input{
+  width: 18px;
+  aspect-ratio: 1/1;
+}
+
+.container.main-signin,
+.container.main-signup{
+    display: none;
+    position: relative;
+}
+
+.container.main-signin.active,
+.container.main-signup.active{
+    display: flex;
+    animation: fadeIn 0s linear;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    --w: 100%;
+  }
+}
+    
+
+/* notification */
+.overllay-notification {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+}
+.overllay-notification>.box-noti.success {
+  --color: green;
+}
+.overllay-notification>.box-noti.warning {
+  --color: orange;
+}
+.overllay-notification>.box-noti.error {
+  --color: red;
+}
+.overllay-notification>.box-noti {
+  --icons-size: 30px;
+  display: flex;
+  gap: 15px;
+  padding: 5px 10px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--color, red);
+  background-color: white;
+  border-radius: 3px;
+  border-left: 5px solid var(--color, red);
+  transition: all 0.5s linear;
+}
+@keyframes fadeInNotification {
+  0% {
+      transform: translateX(calc(100% + 15px));
+      opacity: 0;
+  }
+}
+@keyframes fadeOutNotification {
+  100% {
+      transform: translateX(calc(100% + 15px));
+      opacity: 0;
+  }
+}
+.overllay-notification>.box-noti svg {
+  width: var(--icons-size);
+  height: var(--icons-size);
+  color: var(--color, red);
+}
+.overllay-notification>.box-noti .close {
+  cursor: pointer;
+}
+.overllay-notification>.box-noti .contents {
+  flex: 1;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.overllay-notification>.box-noti .contents .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color, red);
+}
+
+.overllay-notification > div > div.icon,
+.overllay-notification > div > div.close{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overllay-notification>.box-noti.warning .icon{
+  transform: translateY(3px);
+}
+
+
+/* Loading */
+
+/* From Uiverse.io by SchawnnahJ */ 
+
+.status-loading{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(161, 161, 161, 0.2);
+  z-index: 60;
+  backdrop-filter: blur(1px);
+  animation: fadeLoading 0.5s linear;
+}
+
+@keyframes fadeLoading {
+  0% {
+    opacity: 0;
+  }
+}
+
+.status-loading .loader {
+ position: relative;
+ width: 2.5em;
+ height: 2.5em;
+ transform: rotate(165deg);
+}
+
+.status-loading .loader:before, .loader:after {
+ content: "";
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ display: block;
+ width: 0.5em;
+ height: 0.5em;
+ border-radius: 0.25em;
+ transform: translate(-50%, -50%);
+}
+
+.status-loading .loader:before {
+ animation: before8 2s infinite;
+}
+
+.status-loading .loader:after {
+ animation: after6 2s infinite;
+}
+
+@keyframes before8 {
+ 0% {
+  width: 0.5em;
+  box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+ }
+
+ 35% {
+  width: 2.5em;
+  box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
+ }
+
+ 70% {
+  width: 0.5em;
+  box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
+ }
+
+ 100% {
+  box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+ }
+}
+
+@keyframes after6 {
+ 0% {
+  height: 0.5em;
+  box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+ }
+
+ 35% {
+  height: 2.5em;
+  box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+ }
+
+ 70% {
+  height: 0.5em;
+  box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+ }
+
+ 100% {
+  box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+ }
+}
+
+.status-loading .loader {
+ position: absolute;
+ top: calc(50% - 1.25em);
+ left: calc(50% - 1.25em);
+}

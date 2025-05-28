@@ -1,0 +1,194 @@
+
+
+.dv-content{
+    padding: 10px;
+    z-index: 0;
+}
+
+.dv-content .addLesson{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dv-content .addLesson .addLesson-box{
+    display: none;
+    position: relative;
+    transition: padding-bottom 0.2s linear;
+}
+
+.dv-content .addLesson .addLesson-box .addLesson-box-btn-close{
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+}
+.dv-content .addLesson .addLesson-box:hover{
+    padding-bottom: 20px;
+}
+
+.dv-content .addLesson .addLesson-box:hover .addLesson-box-btn-close{
+    display: block;
+    animation: fadeIn-opacity 0.3s linear;
+}
+
+.dv-content .addLesson .addLesson-form{
+    --btn-h: 35px;
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.dv-content .addLesson .addLesson-form .fromGroup{
+    flex: 1;
+}
+
+.dv-content .addLesson.show .btn-addLesson{
+    display: none;
+}
+
+.dv-content .addLesson.show .addLesson-box{
+    display: block;
+    animation: fadeIn-top 0.3s linear;
+}
+
+.dv-content .list-Lession{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.dv-content .list-Lession .list-Lession-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* width: calc(); */
+}
+
+.dv-content .table-lesson{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.dv-content .table-lesson thead tr{
+    background-color: var(--mb-primary-color);
+    color: white;
+    text-align: left;
+}
+
+.dv-content .table-lesson th,
+.dv-content .table-lesson td{
+    padding: 10px;
+}
+
+.dv-content .table-lesson tbody tr{
+    border-bottom: 1px solid #ccc;
+}
+.dv-content .table-lesson tbody tr:last-of-type{
+    border-bottom: 2px solid var(--mb-primary-color); 
+}
+
+.dv-content .table-lesson .actions{
+    display: flex;
+    gap: 15px;
+}
+
+.dv-content .table-lesson .actions .btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.dv-content .list-Lession .td-btn{
+    display: flex;
+    gap: 10px;
+}
+.dv-content .list-Lession .td-btn button{
+    padding: 5px 20px;
+}
+
+/* .dv-content .table-lesson tr td:nth-child(3){
+    /* width: 20%; */
+*/
+
+
+/* code sửa khóa học */
+
+#root{
+    position: relative;
+}
+
+.dv-edit-course{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(216, 216, 216,0.3);
+    backdrop-filter: blur(2px);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.dv-edit-course>form{
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    width: 400px;
+    
+}
+
+.dv-edit-course>form>button{
+    margin-top: 10px;
+}
+
+/* css dành cho chuyển đổi số lượng item trên trang */
+.list-lesson-pagination-container{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-lesson-pagination-container-select select{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.course-search-box{
+    margin-bottom: 10px;
+}
+
+.course-search-box .formGroup{
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+}
+
+.course-search-box .formGroup label{
+    font-weight: 500;
+}
+
+.course-search-box .formGroup select{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    flex-basis: 20%;
+}
+
+.mbLink:hover{
+    text-decoration: underline;
+    color: blue;
+}

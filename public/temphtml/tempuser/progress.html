@@ -1,0 +1,307 @@
+<style>
+    .dv-content {
+        padding: 10px;
+    }
+
+    .dv-content-title {
+        font-size: 25px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .dv-content-box {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .dv-content-box.box1 .courseName,
+    .dv-content-box.box1 .className {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .dv-content-box.box1 .courseName span,
+    .dv-content-box.box1 .className span {
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .dv-content-box.box1 .box-progress {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .dv-content-box.box1 .box-progress .progress {
+        --score: 0%;
+        flex: 1;
+        height: 10px;
+        background-color: white;
+        border: 1px solid rgb(173, 173, 173);
+        border-radius: 10px;
+        padding: 1.5px;
+        overflow: hidden;
+    }
+
+    .dv-content-box.box1 .box-progress .progress .progress_bar {
+        width: var(--score);
+        height: 100%;
+        background-color: green;
+        border-radius: 5px;
+    }
+
+    .dv-content-box.box2 {
+        margin-top: 10px;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .dv-content-box.box2>* {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /*  */
+
+    .chart-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .chart-container .chart-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .chart-container .chart-title span{
+        font-weight: normal;
+        color: #868686;
+    }
+
+    .chart-container .chart {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 8px;
+        gap: 10px;
+    }
+
+    .chart-container .bar {
+        position: relative;
+        --width: 0%;
+        width: 0;
+        background-color: rgba(187, 187, 187,0.2);
+        border-radius: 2px;
+        text-align: right;
+        color: transparent;
+        padding-right: 10px;
+        transition: width 0.3s ease;
+        margin-bottom: 5px;
+        isolation: isolate;
+        animation: dv_grow 1s ease forwards;
+    }
+
+    .chart-container .bar>div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #4CAF50;
+        width: var(--width);
+        z-index: -1;
+        color: white;
+        border-radius: 2px;
+    }
+
+    .chart-container .bar.red > div {
+        color: red;
+    }
+
+    .chart-container .bar>div{
+        padding-right: 10px;
+    }
+
+    @keyframes dv_grow {
+        0% {
+            width: 0 !important;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    .chart-container .bar-label {
+        margin-top: 5px;
+    }
+
+    .chart-container .separator {
+        height: 1px;
+        background-color: #ddd;
+        margin: 5px 0;
+    }
+
+    .chart-container .chart>div:last-child .separator {
+        display: none;
+    }
+
+    /* .chart-container .bar:hover {
+        background-color: #45a049;
+        opacity: 0.8;
+    } */
+</style>
+
+
+
+<div class="dv-content">
+    <div class="dv-content-title">Progress</div>
+    <div class="dv-content-box box1">
+        <!-- <p class="courseName">Course Name: <span>Nền Tảng A1</span></p>
+        <p class="className">ClassName: <span>K198</span></p>
+        <div class="box-progress">
+            <div class="progress" id="progress" style="--score: 70%">
+                <div class="progress_bar"></div>
+            </div>
+            <div id="show_Percent">70% Learnt</div>
+        </div> -->
+    </div>
+
+    <div class="dv-content-box box2">
+        <!-- <div class="box2-item">
+            <div class="chart-container">
+                <h4 class="chart-title">Thống kê doanh số</h4>
+                <div class="chart">
+                    <div>
+                        <div class="bar red" style="--width: 0%">0%</div>
+                        <div class="bar-label">Tháng 1 - Doanh thu cao nhất</div>
+                        <div class="separator"></div>
+                    </div>
+                    <div>
+                        <div class="bar" style="--width: 20%">0%</div>
+                        <div class="bar-label">Tháng 1 - Doanh thu cao nhất</div>
+                        <div class="separator"></div>
+                    </div>
+                    <div>
+                        <div class="bar" style="--width: 40%">0%</div>
+                        <div class="bar-label">Tháng 1 - Doanh thu cao nhất</div>
+                        <div class="separator"></div>
+                    </div>
+                    <div>
+                        <div class="bar" style="--width: 90%">0%</div>
+                        <div class="bar-label">Tháng 1 - Doanh thu cao nhất</div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box2-item">
+            <div class="chart-container">
+                <h4 class="chart-title">Thống kê doanh số</h4>
+                <div class="chart">
+                    <div>
+                        <div class="bar" style="--width: 50%">50%</div>
+                        <div class="bar-label">Tháng 1 - Doanh thu cao nhất</div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+</div>
+
+
+
+
+
+<script type="module">
+    import { mbNotification, mbConfirm, mbLoading, mbFetch, mbPagination, mbFormData } from './public/js/allmodule.js';
+
+    const divRoot = document.getElementById('root');
+    // divRoot.innerHTML = '';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const classId = urlParams.get('class');
+    if (!classId) {
+        window.location.href = 'classes/myclass';
+    }
+
+
+    // get progress
+
+    (async () => {
+        const url = "classes/getprogressbyclass/" + classId;
+        try {
+            mbLoading(true);
+            const res = await mbFetch(url);
+            if (res.error) {
+                mbNotification('Error',res.error, 2, 3);
+                return;
+            }
+            renderProgress(res);
+            console.log(res);
+        } catch (err) {
+            console.log(err);
+        } finally {
+            mbLoading(false);
+        }
+    })();
+
+    function renderProgress(data) {
+        const box1 = document.createElement('div');
+        box1.classList.add('dv-content-box', 'box1');
+        box1.innerHTML = `
+                <p class="courseName">Course Name: <span>${data.courseName}</span></p>
+        <p class="className">ClassName: <span>${data.className}</span></p>
+        <div class="box-progress">
+            <div class="progress" id="progress" style="--score: ${data.percentClass}%">
+                <div class="progress_bar"></div>
+            </div>
+            <div id="show_Percent">${data.percentClass}% Learnt</div>
+        </div>
+        `;
+
+        const box2 = document.createElement('div');
+        box2.classList.add('dv-content-box', 'box2');
+        data.lessons.forEach(lesson => {
+            const boxItem = document.createElement('div');
+            boxItem.classList.add('box2-item');
+            boxItem.innerHTML = `
+                   <div class="chart-container">
+                <h4 class="chart-title">${lesson.lessonName} <span>(${lesson.percentLesson}%)</span></h4>
+                <div class="chart"></div>
+            </div>
+            `;
+            const chart = boxItem.querySelector('.chart');
+            lesson.quizzes.forEach(quiz => {
+                const div = document.createElement('div');
+                const percent = quiz.percentQuiz;
+                div.innerHTML = `
+                        <div class="bar${percent <= 10 ? ' red' : ''}" style="--width: ${percent}%">. <div>${percent}%</div> </div>
+                        <div class="bar-label">${quiz.quizName}</div>
+                        <div class="separator"></div>
+                `;
+                chart.appendChild(div);
+            });
+            box2.appendChild(boxItem);
+        });
+
+        const oldbox1 = document.querySelector('.dv-content-box.box1');
+        const oldbox2 = document.querySelector('.dv-content-box.box2');
+        oldbox1.replaceWith(box1);
+        oldbox2.replaceWith(box2);
+    }
+
+</script>

@@ -1,0 +1,173 @@
+
+.section1{
+    padding: 10px;
+}
+
+.section1>.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section1 .btn-add-student {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.section1 .div-form-add {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    max-height: 0;
+    transition: all 0.3s linear;
+    overflow: hidden;
+}
+
+.section1 .div-form-add.active {
+    max-height: 1000px;
+    padding: 10px;
+}
+
+.section2 form,
+.section1 .div-form-add>form{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.section2 form .form-group.note,
+.section1 .div-form-add .form-group.note{
+    grid-column: 1/3;
+}
+
+.section2 form .form-group.add,
+.section1 .div-form-add .form-group.add{
+    grid-column: 1/3;
+    
+}
+
+@media (max-width: 500px) {
+    .section2 form,
+    .section1 .div-form-add>form{
+        grid-template-columns: 1fr;
+    }
+
+    .section2 form .form-group,
+    .section1 .div-form-add .form-group{
+        grid-column: 1/2;
+    }
+
+}
+.section2 .div-form-edit .form-group.add button,
+.section1 .div-form-add .form-group.add button{
+    width: 20%;
+}
+
+.section2 .div-form-edit .form-group,
+.section1 .div-form-add .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section2 .div-form-edit .form-group label,
+.section1 .div-form-add .form-group label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.section2 .div-form-edit .form-group input,
+.section1 .div-form-add .form-group input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.section2 .div-form-edit .form-group textarea,
+.section1 .div-form-add .form-group textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.section1 .div-form-search {
+    margin-bottom: 10px;
+}
+
+.section1 .div-form-search input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.list-student{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.list-student table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.list-student table thead th {
+    background-color: var(--mb-primary-color);
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.list-student table tbody td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.list-student table tbody td .note-lable {
+    font-weight: bold;
+}
+
+.list-student table tbody td .td-action {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+.main{
+    position: relative;
+}
+
+.section2{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear;
+}
+
+.section2.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.div-form-edit{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+}

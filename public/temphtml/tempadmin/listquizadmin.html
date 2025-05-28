@@ -1,0 +1,420 @@
+<style>
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-group select {
+        padding: 5px;
+        border: none;
+        outline: none;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .dv-content {
+        padding: 10px;
+    }
+
+    .dv-content-title {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .dv-content-box {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    .dv-content-box.box1 {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: end;
+        /* flex-wrap: wrap; */
+    }
+
+    @media (max-width: 560px) {
+        .dv-content-box.box1 {
+            flex-wrap: wrap;
+        }
+    }
+
+    .dv-content-box.box1>* {
+        flex: 1 1 100%;
+    }
+
+    .dv-content-box.box1>*:last-child {
+        flex: 1 1 30%;
+        min-width: fit-content;
+    }
+
+
+    .dv-content-box.box2 .table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 0 5px #ccc;
+        padding: 20px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+    }
+
+    .dv-content-box.box2 .table thead tr {
+        background-color: var(--mb-primary-color);
+        color: white;
+        text-align: left;
+    }
+
+    .dv-content-box.box2 .table th,
+    .dv-content-box.box2 .table td {
+        padding: 10px;
+    }
+
+    .dv-content-box.box2 .table tbody tr {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .dv-content-box.box2 .table tbody tr:last-of-type {
+        border-bottom: 2px solid var(--mb-primary-color);
+    }
+
+    .dv-content-box.box2 .table .td-btns {
+        display: flex;
+        gap: 10px;
+        /* justify-content: center; */
+    }
+
+    .dv-content-box.box2 .table .td-btns button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .dv-content-box.box2 .table .quizName:hover {
+        color: blue;
+    }
+
+    .dv-content-box.box2 .pagination {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="dv-content">
+    <div class="dv-content-title">Quizzes</div>
+    <div class="dv-content-box box1">
+        <div class="form-group">
+            <label for="txtSearch">Courses</label>
+            <select class="form-control" name="idClass" id="id-course-filter">
+                <option value="" disabled selected>Please choose Course</option>
+            </select>
+        </div>
+        <div class="form-group" id="box-lesson">
+            <label for="txtSearch">Lessons</label>
+            <select class="form-control" name="idClass" id="id-lesson-filter">
+                <option value="" disabled selected>Please choose lesson</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" id="show-result">Show Result</button>
+    </div>
+
+    <div class="dv-content-box box2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Lesson Name</th>
+                    <th>Quiz Name</th>
+                    <th>Total</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="list-quiz">
+                <tr>
+                    <td>Course Name</td>
+                    <td>Lesson Name</td>
+                    <td><a class="quizName" href="#">Quiz Name</a></td>
+                    <td>5</td>
+                    <td>Time</td>
+                    <td class="td-btns">
+                        <button class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" width="23" height="23">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                            </svg>
+                        </button>
+                        <button class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination" id="pagination"></div>
+    </div>
+</div>
+
+<script type="module">
+    import { mbNotification, mbConfirm, mbLoading, mbFetch, mbPagination, mbFormData } from './public/js/allmodule.js';
+    const divRoot = document.getElementById('root');
+    // divRoot.innerHTML = '';
+
+    // variables global
+
+    const objectSend = {
+        idCourse: null,
+        idLesson: null,
+        currentPage: 1,
+        itemsPerPage: 20
+    }
+    let totalPages = 1;
+
+    // kiểm tra url có id không
+    const urlParams = new URLSearchParams(window.location.search);
+    let idCourse = parseInt(urlParams.get('course'));
+    let idLesson = parseInt(urlParams.get('lesson'));
+    // kiểm tra xem id có phải là số không, nếu có mới cập nhật lại objectSend
+    if (!isNaN(idCourse)) {
+        objectSend.idCourse = parseInt(idCourse);
+    }
+    if (!isNaN(idLesson)) {
+        objectSend.idLesson = parseInt(idLesson);
+    }
+
+
+    // lấy danh sách course
+
+    (async () => {
+        const EselectCourse = document.getElementById('id-course-filter');
+        try {
+            const courses = await mbFetch('admin/quizzes/getCourses');
+
+            const fragment = document.createDocumentFragment();
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.id;
+                option.textContent = course.courseName;
+                if (objectSend.idCourse == course.id) {
+                    option.selected = true;
+                    getLesson(course.id);
+                }
+                fragment.appendChild(option);
+            });
+            EselectCourse.appendChild(fragment);
+            EselectCourse.addEventListener('change', changeCourses);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    })();
+
+    function changeCourses(e) {
+        if (isNaN(e.target.value)) return;
+        const idCourse = parseInt(e.target.value);
+        objectSend.idCourse = idCourse;
+        objectSend.idLesson = null;
+        getLesson(idCourse);
+    }
+
+    async function getLesson(idCourse){
+        let divLoading = document.querySelector('#box-lesson');
+        const EselectLesson = document.getElementById('id-lesson-filter');
+        emptyElement(EselectLesson);
+        const url = `admin/quizzes/getLessonByCourseId/${idCourse}`;
+        const optiondefault = document.createElement('option');
+        optiondefault.value = '';
+        optiondefault.selected = true;
+        try {
+            mbLoading(true, divLoading);
+            const lessons = await mbFetch(url);
+            if (lessons.length === 0) {
+                optiondefault.textContent = 'No lesson';
+                optiondefault.disabled = true;
+                EselectLesson.appendChild(optiondefault);
+                return;
+            } else {
+                optiondefault.textContent = 'All';
+                EselectLesson.appendChild(optiondefault);
+            }
+            const fragment = document.createDocumentFragment();
+            lessons.forEach(lesson => {
+                const option = document.createElement('option');
+                option.value = lesson.id;
+                option.textContent = lesson.lessonName;
+                if (objectSend.idLesson == lesson.id) {
+                    option.selected = true;
+                }
+                fragment.appendChild(option);
+            });
+            EselectLesson.appendChild(fragment);
+            EselectLesson.addEventListener('change', function(e){
+                const idLesson = parseInt(e.target.value);
+                if(isNaN(idLesson)){
+                    objectSend.idLesson = null;
+                } else {
+                    objectSend.idLesson = idLesson;
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        } finally {
+            mbLoading(false, divLoading);
+        }
+    }
+
+    // show result
+
+    const btnShowResult = document.getElementById('show-result');
+    btnShowResult.addEventListener('click', function(){
+        console.log(objectSend);
+        if(objectSend.idCourse !== null || objectSend.idLesson !== null){
+            // cập nhật lịch sử truy cập
+            let url = window.location.origin + window.location.pathname;
+            let arrParams = [];
+            if(objectSend.idCourse !== null){
+                arrParams.push(`course=${objectSend.idCourse}`);
+            }
+            if(objectSend.idLesson !== null){
+                arrParams.push(`lesson=${objectSend.idLesson}`);
+            }
+            url += '?' + arrParams.join('&');
+            window.history.pushState({},'',url);
+        }
+        getQuizName();
+    });
+
+
+
+    // đầu tiên sẽ lấy toàn bộ quiz
+
+    getQuizName();
+
+    async function getQuizName() {
+        try {
+            mbLoading(true);
+            const data = await mbFetch('admin/quizzes/getQuizName', objectSend);
+            console.log(data);
+            totalPages = data.totalPages;
+            renderQuizzes(data.quizzes);
+        } catch (e) {
+            console.log(e);
+        } finally {
+            mbLoading(false);
+        }
+    }
+
+    function renderQuizzes(quizzes) {
+        const newTbody = document.createElement('tbody');
+        newTbody.id = 'list-quiz';
+        if(quizzes.length === 0){
+            newTbody.textContent = 'No Quiz';
+        }
+        quizzes.forEach(item => newTbody.appendChild(componentTr(item)));
+        const oldTbody = document.getElementById('list-quiz');
+        oldTbody.replaceWith(newTbody);
+
+        // render pagination
+        const pagination = document.getElementById('pagination');
+        emptyElement(pagination);
+        if(totalPages <= 1) return;
+        const ul = mbPagination(objectSend.currentPage, totalPages);
+        pagination.appendChild(ul);
+        [...pagination.querySelectorAll("a")].forEach((item) => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                const page = parseInt(this.dataset.page);
+                objectSend.currentPage = page;
+                getQuizName();
+            });
+        });
+    }
+
+    function componentTr(row) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${row.courseName}</td>
+            <td>${row.lessonName}</td>
+            <td>${row.title}</td>
+            <td>${row.totalQuestion}</td>
+            <td>${row.createdAt}</td>
+            <td class="td-btns">
+                <button class="btn btn-primary edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="23" height="23">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                </button>
+                <button class="btn btn-danger del">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                        </svg>
+                </button>
+            </td>
+        `;
+
+        const btnEdit = tr.querySelector('.edit');
+        btnEdit.onclick = function () {
+            const idCourse = row.idCourse;
+            const idLesson = row.idLessons;
+            const idQuiz = row.id;
+            window.location.href = `admin/quizzes/edit?course=${idCourse}&lesson=${idLesson}&quiz=${idQuiz}`;
+        }
+
+
+        const btnDel = tr.querySelector('.del');
+        btnDel.onclick = async function () {
+            const confirm = await mbConfirm(`Do you want to delete this quiz <b style="color: red">${row.title}</b> ?`);
+            if (!confirm) {
+                return;
+            }
+            try {
+                mbLoading(true);
+                const url = `admin/quizzes/deleteQuiz`;
+                const data = await mbFetch(url, { idQuiz: row.id });
+                if(data.error){
+                    mbNotification('Error', data.error, 2, 3);
+                    return;
+                }
+                mbNotification('Success', data.message, 1, 3);
+                tr.remove();
+            }catch(e){
+                console.log(e);
+            }finally{
+                mbLoading(false);
+            }
+        }
+
+        return tr;
+    }
+
+
+    function emptyElement(element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+
+
+
+</script>

@@ -1,0 +1,181 @@
+.dv-content {
+    padding: 10px;
+}
+
+.dv-content .dv-content-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--mb-primary-color);
+}
+
+.dv-content .dv-content-box {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.dv-content .dv-content-box.box1 {
+    padding: 0;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.dv-content .dv-content-box.box1 .left {
+    flex: 1 1 50%;
+    min-width: 50%;
+}
+
+.dv-content .dv-content-box.box1 .left>h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #22bab3;
+}
+
+@media (min-width: 500px) {
+    .dv-content .dv-content-box.box1 .left>h4 {
+        font-size: 30px;
+    }
+}
+
+.dv-content .dv-content-box.box1 .left>p {
+    font-size: 16px;
+    color: #333;
+}
+
+.dv-content .dv-content-box.box1>.right img {
+    width: 100%;
+    max-width: 460px;
+}
+
+
+.dv-content .dv-content-box.box2 {
+    background-color: #e6e6eb;
+}
+
+.dv-content .dv-content-box.box2>.box-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.dv-content .dv-content-box.box2 .box2-content {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>* {
+    flex: 1 1 100%;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.left {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.left>.icon {
+    background-color: #d7e1e5;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.left>.icon-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #494949;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right {
+    /* background-color: white; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>* {
+    flex: 1 1 100%;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon {
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon.all {
+    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    box-shadow: 0 3px 10px 0px rgba(68, 198, 206, 0.4);
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon.start {
+    background-image: linear-gradient(135deg, #11c99c, #00e31d);
+    box-shadow: 0 3px 10px 0px rgba(91, 255, 113, 0.4);
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon.finish {
+    background-image: linear-gradient(135deg, #ea893a 10%, #f19d5e);
+    box-shadow: 0 3px 10px 0 rgba(204, 137, 88, 0.78);
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon.uncomp {
+    background-image: linear-gradient(135deg, #d2c63d 10%, #e9f112);
+    box-shadow: 0 3px 10px 0 rgba(236, 225, 108, 0.78);
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon.comp {
+    background-image: linear-gradient(135deg, #11c99c, #00e31d);
+    box-shadow: 0 3px 10px 0px rgba(91, 255, 113, 0.4);
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.dv-content .dv-content-box.box2 .box2-content>.right>.right-item>.icon-text>span:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #494949;
+}
+
+@media (min-width: 500px) {
+    .dv-content .dv-content-box.box2 .box2-content>* {
+        /* flex: 1 1 auto; */
+    }
+
+    .dv-content .dv-content-box.box2 .box2-content>.left {
+        flex: 0;
+    }
+
+    .dv-content .dv-content-box.box2 .box2-content>.right {
+        flex: 1;
+    }
+
+.dv-content .dv-content-box.box2 .box2-content>.right>* {
+    flex: auto;
+    height: fit-content;
+    min-width: 150px;
+    flex: 1;
+}
+}

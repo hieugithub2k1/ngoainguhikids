@@ -1,0 +1,115 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group select {
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dv-content {
+    padding: 10px;
+}
+
+.dv-content-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.dv-content-box {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.dv-content-box.box1 {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: end;
+    /* flex-wrap: wrap; */
+}
+
+@media (max-width: 560px) {
+    .dv-content-box.box1 {
+        flex-wrap: wrap;
+    }
+}
+
+.dv-content-box.box1>* {
+    flex: 1 1 100%;
+}
+
+.dv-content-box.box1>*:last-child {
+    flex: 1 1 30%;
+    min-width: fit-content;
+}
+
+
+.dv-content-box.box2 .table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.dv-content-box.box2 .table thead tr {
+    background-color: var(--mb-primary-color);
+    color: white;
+    text-align: left;
+}
+
+.dv-content-box.box2 .table th,
+.dv-content-box.box2 .table td {
+    padding: 10px;
+}
+
+.dv-content-box.box2 .table tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.dv-content-box.box2 .table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--mb-primary-color);
+}
+
+.dv-content-box.box2 .table .td-btns {
+    display: flex;
+    gap: 10px;
+    /* justify-content: center; */
+}
+
+.dv-content-box.box2 .table .td-btns button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dv-content-box.box2 .table .quizName:hover {
+    color: blue;
+}
+
+.dv-content-box.box2 .pagination {
+    margin-top: 10px;
+}

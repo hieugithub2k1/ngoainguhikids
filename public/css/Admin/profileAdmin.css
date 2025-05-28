@@ -1,0 +1,147 @@
+.container1 {
+  margin: 10px;
+  width: auto;
+}
+.container1 .btn-bt {
+  margin: 15px 0 10px 0;
+  gap: 10px;
+  display: flex;
+}
+.container1 .btn-bt button {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 7px 20px;
+}
+.container1 .btn-bt .btn-change {
+  margin-right: 12px;
+  color: rgb(34, 186, 179);
+  border: rgb(34, 186, 179) solid 1px;
+}
+.container1 .btn-bt .btn-save {
+  color: #fff;
+  background-color: rgb(34, 186, 179);
+}
+.container1 .btn-bt .btn-cancel {
+  color: #fff;
+  background-color: rgb(255, 0, 13);
+}
+.container1 .btn-bt .btn-change:hover {
+  background-color: rgb(34, 186, 179);
+  color: #ffffff;
+  transition: 0.6s ease;
+}
+.container1 .btn-bt .btn-save:hover {
+  background-color: rgb(55, 211, 203);
+  color: #ffffff;
+  transition: 0.6s ease;
+}
+.container1 .btn-bt .btn-cancel:hover {
+  background-color: rgb(209, 14, 24);
+  color: #ffffff;
+  transition: 0.6s ease;
+}
+.container1 .grid {
+  margin-bottom: 15px;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.container1 .grid h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+.container1 .grid .form-group {
+  margin-bottom: 1.5rem;
+}
+.container1 .grid .form-group label {
+  display: block;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  font-size: 1em;
+}
+.container1 .grid .form-group input {
+  width: 100%;
+  background-color: #f9fafb;
+  padding: 0.55rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+.container1 .grid .form-group input[readonly] {
+  background-color: #f3f4f6;
+}
+.status-active {
+  color: #10b981;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .container1 .grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ======================================== */
+#root {
+  position: relative;
+}
+
+.dv-change {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(216, 216, 216, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.dv-change > form {
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  width: 400px;
+}
+
+.dv-change > form > button {
+  margin-top: 10px;
+}
+.dv-change > .formChangePass {
+  margin-top: 70px;
+}
+.dv-change > .formChangePass .formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.dv-change > .formChangePass .formGroup input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.btn-green {
+  background-color: #34d399;
+  color: white;
+  padding: 3px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-green:hover {
+  background-color: #2df8ae;
+  color: white;
+  transition: 0.6s ease;
+}

@@ -1,0 +1,802 @@
+<style>
+    :root {
+        --mb-text-nomal: 16px;
+        --mb-text-title: 20px;
+    }
+
+    .dv-content-quiz {
+        padding: 10px;
+    }
+
+    .dv-content-quiz-box {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .dv-content-quiz-box.quizzes {
+        margin-top: 10px;
+    }
+
+    @media (max-width: 500px) {
+        .dv-content-quiz-box.quizzes {
+            padding-bottom: 50px;
+        }
+    }
+
+    .dv-content-quiz-box.quizzes .quiz-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .dv-content-quiz-box.quizzes .media-audio {
+        margin-top: 15px;
+    }
+
+    .dv-content-quiz-box.quizzes .media-audio>span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .dv-content-quiz-box.quizzes .media-audio>audio {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .dv-content-quiz-box.quizzes .media-text {
+        margin-top: 15px;
+        border-bottom: 1px solid rgba(192, 192, 192, 0.5);
+        padding-bottom: 10px;
+    }
+
+    .dv-content-quiz-box.quizzes .media-text>span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .dv-content-quiz-box.quizzes .media-text>p {
+        font-size: var(--mb-text-nomal);
+        color: #333;
+        margin-top: 5px;
+    }
+
+    .dv-content-quiz-box.quizzes .media-text .textContents {
+        margin-top: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(105, 105, 105, 0.3);
+        padding: 10px;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions {
+        margin-top: 15px;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-box {
+        /* border: 1px solid #ccc; */
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgba(202, 202, 202, 0.3);
+        /* background-color: red; */
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-write>p,
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-choice>p {
+        font-size: var(--mb-text-title);
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-choice .answers-choice-group {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-choice .answers-choice-group>label {
+        --border-color: transparent;
+        flex: 1 1 45%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        border: 2px solid var(--border-color);
+    }
+
+    /* active question */
+ 
+    @media(min-width: 500px){
+        .dv-content-quiz-box.quizzes .quizListQuestions:not(.showResult) .question-choice .answers-choice-group>label:hover {
+        --border-color: rgba(39, 39, 248,0.4);
+    }
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-choice .answers-choice-group>label>input {
+        display: none;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions:not(.showResult) .question-choice .answers-choice-group>label:has(input:checked) {
+        --border-color: blue;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-choice .answers-choice-group>label>span {
+        font-size: var(--mb-text-nomal);
+        color: #000000;
+    }
+
+    /* show Result */
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-choice .answers-choice-group>label {
+        pointer-events: none;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-choice.isCorrectTrue .answers-choice-group>label:has(input:checked) {
+        --border-color: green;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-choice.isCorrectFalse .answers-choice-group>label:has(input:checked) {
+        --border-color: red;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions .question-write>input {
+        --border-color: transparent;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: var(--mb-text-nomal);
+        color: #000000;
+        margin-top: 5px;
+        outline: none;
+        background-color: white;
+        border: 2px solid var(--border-color);
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-write>input {
+        pointer-events: none;
+        border: 2px solid var(--border-color);
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-write.isCorrectTrue>input {
+        --border-color: green;
+    }
+
+    .dv-content-quiz-box.quizzes .quizListQuestions.showResult .question-write.isCorrectFalse>input {
+        --border-color: red;
+    }
+
+    .dv-content-quiz-box.quizzes .submit-box {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dv-content-quiz-box.quizzes .submit-box .btn.tryagain {
+        background-color: green;
+        border-color: green;
+    }
+
+    .dv-content-quiz-box.quizzes .submit-box .btn.tryagain:hover {
+        background-color: rgb(0, 95, 0);
+        border-color: green;
+    }
+
+    .dv-content-quiz-box.quizzes .submit-box .quize-score {
+        font-size: 20px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    @media (max-width: 500px) {
+        .dv-content-quiz-box.quizzes .quizListQuestions .question-choice .answers-choice-group>label {
+            flex: 1 1 100%;
+        }
+    }
+</style>
+
+
+
+<style>
+    .dv-content-quiz-box.boxinfo .dv-top a:first-child {
+        color: #22bab3;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .dv-content-quiz-box.boxinfo .dv-top a:last-child {
+        color: black;
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .dv-content-quiz-box.boxinfo .dv-top a:hover {
+        text-decoration: underline;
+    }
+
+    .dv-content-quiz-box.boxinfo .dv-bottom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .dv-content-quiz-box.boxinfo .dv-bottom .progress {
+        --score: 0%;
+        flex: 1;
+        height: 10px;
+        background-color: white;
+        border: 1px solid rgb(173, 173, 173);
+        border-radius: 10px;
+        padding: 1.5px;
+        overflow: hidden;
+    }
+
+    .dv-content-quiz-box.boxinfo .dv-bottom .progress .progress_bar {
+        width: var(--score);
+        height: 100%;
+        background-color: green;
+        border-radius: 5px;
+    }
+
+    /* them audio drive va video */
+
+    .mediaYoutubeVideo,
+    .mediaDriveAudio {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .mediaDriveAudio iframe {
+        width: 100%;
+        height: 60px;
+    }
+
+    .mediaYoutubeVideo .preview {
+        width: 100%;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .mediaYoutubeVideo .preview .preview1 {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+    }
+
+    .mediaYoutubeVideo .preview .preview1 iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+
+
+
+<div class="dv-content-quiz">
+
+    <div class="dv-content-quiz-box boxinfo">
+        <!-- <div class="dv-top"><a href="#">K198:</a> <a href="#">Unit 1</a></div>
+        <div class="dv-bottom">
+            <div class="progress" style="--score: 90%">
+                <div class="progress_bar"></div>
+            </div>
+            <div>0% Learnt</div>
+        </div> -->
+    </div>
+
+    <div class="dv-content-quiz-box quizzes">
+        <form action="" id="formQuizzes">
+            <div class="title">
+                <h3 class="quiz-title"></h3>
+            </div>
+
+            <div class="quizmedia">
+                <!-- <div class="media-audio">
+                    <span>Nghe ddoan van tren va tra loi cau hoi</span>
+                    <audio controls>
+                        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    </audio>
+                </div> -->
+
+                <!-- <div class="media-text">
+                    <span>đọc đoạn văn dưới đây và trả lời câu hỏi</span>
+                    <p>
+                        My mother is a person I admire most. She devoted a lot of time and energy to the upbringing of my two brothers and 1. Despite working hard, she always made time to teach us many useful things which are necessary and important in our later lives. Moreover, she is a good role model for me to follow. She always tries to get on well with people who live next door and help everyone when they are in difficulties, so most of them respect and love her. I admire and look up to my mother because she not only brings me up well but also stands by me and gives some help if necessary. For example, when I encounter some difficulties, she will give me some precious advice to help me solve those problems. She has a major influence on me and 1 hope that I will inherit some of her traits.
+                    </p>
+                </div> -->
+
+                <!-- <div class="mediaDriveAudio">
+                    <span>Nghe ddoan van tren va tra loi cau hoi</span>
+                    <iframe src="https://drive.google.com/file/d/1MVJ7fP2vFO-S-znzHjD95N-aRNrVgDw0/preview" frameborder="0"></iframe>
+                </div> -->
+
+                <!-- <div class="mediaYoutubeVideo">
+                    <span>xem video va tra loi cau hoi</span>
+                    <div class="preview">
+                        <div class="preview1">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/v3lqktHc6NQ?si=9MFWRu6uOymHR41W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <div class="quizListQuestions">
+                <!-- <div class="question-box question-choice">
+                    <p class="question-title">1. What is the name of the animal?</p>
+                    <div class="answers-choice-group">
+                        <label class="answers-choice-label">
+                            <input type="radio" name="question1" id="question1" value="1">
+                            <span>hourse</span>
+                        </label>
+                        <label class="answers-choice-label">
+                            <input type="radio" name="question1" id="question1" value="1">
+                            <span>hourse</span>
+                        </label>
+                        <label class="answers-choice-label">
+                            <input type="radio" name="question1" id="question1" value="1">
+                            <span>hourse</span>
+                        </label>
+                        <label class="answers-choice-label">
+                            <input type="radio" name="question1" id="question1" value="1">
+                            <span>hourse</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="question-box question-write">
+                    <p class="question-title">2. What is the name of the animal?</p>
+                    <input type="text" name="question2" id="question2" class="form-control" placeholder="Enter your answer">
+                </div> -->
+            </div>
+
+            <!-- <div class="submit-box">
+                <div class="quize-score"></div>
+                <button type="button" class="btn btn-primary btn-submit-quiz">Submit</button>
+            </div> -->
+        </form>
+    </div>
+</div>
+
+
+<script type="module">
+    import { mbNotification, mbConfirm, mbLoading, mbFetch, mbPagination, mbFormData } from './public/js/allmodule.js';
+
+    const divRoot = document.getElementById('root');
+    // divRoot.innerHTML = '';
+
+    // variable global
+
+    const dataPage = {
+        idClass: null,
+        idLesson: null,
+        idQuiz: null,
+    };
+
+
+    let quizResult = {
+        idQuizzesCMS: null,
+        idClasses: null,
+        idLesson: null,
+        score: 0,
+        answers: []
+    }
+
+    let quizzes = null;
+    let firstResult = false;
+    let scoreResult = null;
+    let detailResult = [];
+
+    // kiểm tra có param idCourse không thì gắn vào dataPage
+    const urlParams = new URLSearchParams(window.location.search);
+    let idClass = urlParams.get('class');
+    let idLesson = urlParams.get('unit');
+    let idQuiz = urlParams.get('quiz');
+    // kiểm tra nếu param là số thì gắn vào dataPage
+    if (!isNaN(idClass)) {
+        dataPage.idClass = idClass;
+    }
+    if (!isNaN(idLesson)) {
+        dataPage.idLesson = idLesson;
+    }
+    if (!isNaN(idQuiz)) {
+        dataPage.idQuiz = idQuiz;
+    }
+
+
+    const STTABC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+
+    const formQuizzes = document.getElementById('formQuizzes');
+    const quizTitle = formQuizzes.querySelector('.quiz-title');
+    const quizMedia = formQuizzes.querySelector('.quizmedia');
+    const listQuestions = formQuizzes.querySelector('.quizListQuestions');
+    const score = formQuizzes.querySelector('.quize-score');
+
+    // lấy dữ liệu quiz
+
+    getQuiz();
+
+    async function getQuiz() {
+        // kiểm tra các thuộc tính của dataPage, nếu có thuộc tính null thì cho dừng lại
+        if (dataPage.idClass === null || dataPage.idLesson === null || dataPage.idQuiz === null) {
+            mbNotification('Error', 'Wrong link, please go back', 2, 3);
+            return;
+        }
+
+        const url = `quizzes/getQuestionByIdQuiz/${dataPage.idClass}/${dataPage.idLesson}/${dataPage.idQuiz}`;
+        try {
+            mbLoading(true);
+            quizzes = await mbFetch(url);
+            if (quizzes.result !== null) {
+                scoreResult = quizzes.result.score;
+                detailResult = quizzes.result.detail;
+                firstResult = true;
+            }
+            console.log(quizzes);
+            renderScore(quizzes.idClass, quizzes.className, quizzes.idLesson, quizzes.lessonName, quizzes.scoreUnit);
+            renderQuizzes(quizzes);
+        } catch (err) {
+            console.log(err);
+        } finally {
+            mbLoading(false);
+        }
+    }
+
+
+    function renderScore(idClass, className, idLesson, lessonName, scorePercent) {
+        const box2 = document.querySelector('.dv-content-quiz-box.boxinfo');
+        handlEmptyChildren(box2);
+        const divTop = document.createElement('div');
+        divTop.classList.add('dv-top');
+        divTop.innerHTML = `<a href="quizzes?class=${idClass}">${className}:</a> <a href="quizzes?class=${idClass}&lesson=${idLesson}">${lessonName}</a>`;
+        const divBottom = document.createElement('div');
+        divBottom.classList.add('dv-bottom');
+        divBottom.innerHTML = `
+        <div class="progress" id="progress" style="--score: ${scorePercent}%">
+            <div class="progress_bar"></div>
+        </div>
+        <div id="show_Percent">${scorePercent}% Learnt</div>
+        `;
+        box2.append(divTop, divBottom);
+    }
+
+    function renderQuizzes(data) {
+        quizResult = {
+            idClasses: data.idClass,
+            idQuizzesCMS: data.idQuiz,
+            idLesson: data.idLesson,
+            score: 0,
+            answers: []
+        }
+        quizTitle.textContent = data.quizName;
+        listQuestions.classList.remove('showResult');
+        handlEmptyChildren(quizMedia);
+        const mediaElement = hanldMediaComponent(data.mediaCMS)
+        if (mediaElement) {
+            quizMedia.appendChild(mediaElement);
+        }
+        const questions = data.questionsCMS;
+        handlEmptyChildren(listQuestions);
+        questions.forEach((question, index) => {
+
+            const answer = {
+                type: 0,
+                idQuestion: question.id,
+                idAnswer: null,
+                isCorrect: false,
+                answer: null
+            };
+
+            quizResult.answers.push(answer);
+
+            let questionComponent = null;
+            if (question.typeAnswers == 0) {
+                questionComponent = quizChoiceComponent(question, index, answer);
+            } else if (question.typeAnswers == 1) {
+                questionComponent = quizWriteComponent(question, index, answer);
+            }
+            if (questionComponent) {
+                listQuestions.appendChild(questionComponent);
+            }
+        });
+        const submitBox = formQuizzes.querySelector('.submit-box');
+        if (submitBox) {
+            submitBox.remove();
+        }
+        if(firstResult){
+            formQuizzes.appendChild(tryAgainCompoent());
+        }else{
+            formQuizzes.appendChild(submitCompoent());
+        }
+
+        return;
+
+    }
+
+    function renderQuizzesResult() {
+        const questions = listQuestions.querySelectorAll('.question-box');
+        const resultQuestions = quizResult.answers;
+        questions.forEach((question) => {
+            const indexQuestion = parseInt(question.getAttribute('data-indexQuestion'));
+            const resultQuestion = resultQuestions[indexQuestion].isCorrect;
+            question.classList.remove('isCorrectTrue', 'isCorrectFalse');
+            if (resultQuestion === null) {
+                return;
+            }
+            question.classList.add(resultQuestion ? 'isCorrectTrue' : 'isCorrectFalse');
+        });
+
+        const submitBox = formQuizzes.querySelector('.submit-box');
+        if (submitBox) {
+            const btnold = submitBox.querySelector('.btn-submit-quiz');
+            const newbtn = document.createElement('button');
+            newbtn.classList.add('btn', 'btn-primary', 'btn-submit-quiz', 'tryagain');
+            newbtn.textContent = 'Try Again';
+            newbtn.type = 'button';
+            newbtn.addEventListener('click', function () {
+                renderQuizzes(quizzes);
+            });
+            btnold.replaceWith(newbtn);
+        }
+    }
+
+    function tryAgainCompoent() {
+        firstResult = false;
+        const submitBox = formQuizzes.querySelector('.submit-box');
+        if (submitBox) {
+            submitBox.remove();
+        }
+        listQuestions.classList.add('showResult');
+        const divBox = document.createElement('div');
+        divBox.classList.add('submit-box');
+        divBox.innerHTML = `
+        <div class="quize-score">Your Score: ${scoreResult}/10</div>
+        <button type="button" class="btn btn-primary btn-submit-quiz tryagain">Try Again</button>
+        `;
+        const btn = divBox.querySelector('.tryagain');
+        btn.addEventListener('click', function () {
+            listQuestions.classList.remove('showResult');
+            formQuizzes.appendChild(submitCompoent());
+        });
+        return divBox;
+    }
+
+    function submitCompoent() {
+        const submitBox = formQuizzes.querySelector('.submit-box');
+        if (submitBox) {
+            submitBox.remove();
+        }
+        const divBox = document.createElement('div');
+        divBox.classList.add('submit-box');
+        divBox.innerHTML = `
+        <div class="quize-score"></div>
+        <button type="Submit" class="btn btn-primary btn-submit-quiz">Submit</button>
+        `;
+        return divBox;
+    }
+
+    formQuizzes.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const confirmSubmit = await mbConfirm('Are you sure you want to submit?');
+        if (!confirmSubmit) {
+            return;
+        }
+        const totalQuestion = quizResult.answers.length;
+        const maxScore = 10;
+        const scoreEachQuestion = maxScore / totalQuestion;
+        let score = 0;
+        quizResult.answers.forEach(answer => {
+            if (answer.isCorrect) {
+                score += scoreEachQuestion;
+            }
+        });
+        score = Math.round(score * 10) / 10;
+        quizResult.score = score;
+
+        // guiwr du lieu len server
+        try {
+            mbLoading(true);
+            const url = 'admin/quizzes/submitQuiz';
+            const dataRes = await mbFetch(url, quizResult);
+            if (dataRes.error) {
+                mbNotification('Error', dataRes.error, 2, 3);
+                return;
+            }
+            console.log(dataRes);
+            const progress = document.getElementById('progress');
+            const showPercent = document.getElementById('show_Percent');
+            showPercent.textContent = `${dataRes.scoreUnit}% Learnt`;
+            progress.style.setProperty('--score', `${dataRes.scoreUnit}%`);
+            mbNotification('Success', 'Submit success', 1, 2);
+            console.log(dataRes);
+        } catch (err) {
+            console.log(err);
+            return;
+        } finally {
+            mbLoading(false);
+        }
+        scoreResult = score;
+        renderQuizzesResult();
+        formQuizzes.appendChild(tryAgainCompoent());
+
+        
+    });
+
+    function hanldMediaComponent(data) {
+        if (!data) {
+            return null;
+        }
+        if (data.type == 0) {
+            return mediaAudioComponent(data);
+        } else if (data.type == 1) {
+            return mediaTextComponent(data);
+        } else if (data.type == 2) {
+            return mediaDriveAudio(data);
+        } else if (data.type == 3) {
+            return mediaYoutubeVideo(data);
+        }
+    }
+
+    function mediaAudioComponent(data) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('media-audio');
+        divBox.innerHTML = `
+                    <span>${data.title}</span>
+                    <audio controls>
+                        <source src="public/media/${data.content}" type="audio/mpeg">
+                    </audio>
+    `;
+        return divBox;
+    }
+
+    function mediaTextComponent(data) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('media-text');
+        divBox.innerHTML = `
+        <span>${data.title}</span>
+        <div class="textContents">${data.content}</div>
+    `;
+        return divBox;
+    }
+
+    function mediaDriveAudio(data) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('mediaDriveAudio');
+        divBox.innerHTML = `
+        <span>${data.title}</span>
+        <iframe src="${data.content}" frameborder="0"></iframe>
+        `;
+        return divBox;
+    }
+
+    function mediaYoutubeVideo(data) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('mediaYoutubeVideo');
+        divBox.innerHTML = `
+                    <span>${data.title}</span>
+                    <div class="preview">
+                        <div class="preview1">
+                            ${data.content}
+                        </div>
+                    </div>
+        `;
+        return divBox;
+    }
+
+    function quizChoiceComponent(questions, indexQuestion, answer_original) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('question-box', 'question-choice');
+        divBox.setAttribute('data-indexQuestion', indexQuestion);
+        const stringIsCorrect = {
+            0: 'isCorrectFalse',
+            1: 'isCorrectTrue'
+        }
+        const idQuestion = questions.id;
+        const oldAnswer = detailResult[idQuestion];
+        if(oldAnswer){
+            answer_original.idAnswer = oldAnswer.idAnswersCMS;
+            answer_original.isCorrect = oldAnswer.isCorrect == 1;
+            divBox.classList.add(stringIsCorrect[oldAnswer.isCorrect]);
+        }
+        answer_original.type = 0;
+
+        divBox.innerHTML = `
+                        <p class="question-title">${indexQuestion + 1}. ${questions.questionName}</p>
+                    <div class="answers-choice-group"></div>
+    `;
+
+        const answers = questions.answersCMS;
+        const answersGroup = divBox.querySelector('.answers-choice-group');
+        answers.forEach((answer, index) => {
+            let checked = '';
+            if (oldAnswer && oldAnswer.idAnswersCMS == answer.id) {
+                checked = 'checked';
+            }
+            const label = document.createElement('label');
+            label.classList.add('answers-choice-label');
+            label.innerHTML = `
+            <input type="radio" name="question_${questions.id}" id="question_${questions.id}" value="${answer.id}" ${checked}>
+            <span>${STTABC[index]}. ${answer.answerName}</span>
+        `;
+
+            label.querySelector('input').addEventListener('change', function (e) {
+                const idAnswer = parseInt(e.target.value);
+                answer_original.idAnswer = idAnswer;
+                answer_original.isCorrect = answer.isCorrect;
+            });
+            answersGroup.appendChild(label);
+        });
+
+        return divBox;
+    }
+
+    function quizWriteComponent(Question, indexQuestion, answer_original) {
+        const divBox = document.createElement('div');
+        divBox.classList.add('question-box', 'question-write');
+        divBox.setAttribute('data-indexQuestion', indexQuestion);
+        answer_original.type = 1;
+        answer_original.isCorrect = null;
+        const stringIsCorrect = {
+            0: 'isCorrectFalse',
+            1: 'isCorrectTrue'
+        }
+        const idQuestion = Question.id;
+        const oldAnswer = detailResult[idQuestion];
+        let oldValueInput = '';
+        if(oldAnswer){
+            answer_original.idAnswer = oldAnswer.idAnswersCMS;
+            answer_original.isCorrect = oldAnswer.isCorrect == 1;
+            divBox.classList.add(stringIsCorrect[oldAnswer.isCorrect]);
+            oldValueInput = oldAnswer.userAnswer;
+        }
+        
+        divBox.innerHTML = `
+        <p class="question-title">${indexQuestion + 1}. ${Question.questionName}</p>
+        `;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Enter your answer';
+        input.value = oldValueInput;
+        input.addEventListener('input', function (e) {
+            answer_original.idAnswer = Question.answersCMS.id;
+            const truValue = Question.answersCMS.answerName.trim();
+            const saveValue = e.target.value;
+            const userValue = saveValue.trim();
+            if (userValue == '') {
+                answer_original.answer = null;
+                answer_original.isCorrect = null;
+                return;
+            }
+            const resultBoolean = truValue.toLowerCase() == userValue.toLowerCase();
+            answer_original.answer = saveValue;
+            answer_original.isCorrect = resultBoolean;
+        });
+        divBox.appendChild(input);
+        return divBox;
+    }
+
+    function handlEmptyChildren(element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+
+
+
+</script>

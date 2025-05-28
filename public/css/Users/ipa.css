@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --color-monophthongs: #F3F3F3;
+    --color-dipthongs: #DADADA;
+    --color-consonants: #FFFF98;
+    --color-vowels-title: #E6E6E6;
+    --w-box: 80px;
+    --size-title: 15px;
+    --size-box1: 15px;
+    --size-box2: 25px;
+    --size-box3: 15px;
+}
+
+@media (max-width: 500px) {
+    :root {
+        --w-box: 50px;
+        --size-title: 9px;
+        --size-box1: 10px;
+        --size-box2: 15px;
+        --size-box3: 10px;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.container .title_ipa{
+    font-size: 25px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.container>.content {
+    flex: 1;
+}
+
+#ipa>.consonants,
+#ipa>.vowels {
+    display: flex;
+}
+
+#ipa>.consonants>.left,
+#ipa>.vowels>.left {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 35px;
+    min-width: 35px;
+    align-items: center;
+    justify-content: center;
+}
+
+#ipa>.vowels>.left {
+    border-bottom: none;
+}
+
+#ipa>.consonants>.left span,
+#ipa>.vowels>.left span {
+    transform: rotate(-90deg);
+    font-size: var(--size-title);
+}
+
+#ipa>.consonants>.right,
+#ipa>.vowels>.right {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+#ipa>.vowels>.right>.monophthongs>.row.title,
+#ipa>.vowels>.right>.dipthongs>.row.title {
+    border: 1px solid black;
+    justify-content: center;
+    border-left: none;
+    border-bottom: none;
+    padding: 5px;
+    font-size: var(--size-title);
+}
+
+#ipa>.vowels>.right>.dipthongs>.row.title {
+    width: 160px;
+}
+
+#ipa .row {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.box {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: var(--w-box);
+    aspect-ratio: 1/1;
+    position: relative;
+    cursor: pointer;
+    border-left: none;
+    border-bottom: none;
+}
+
+.box>span {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    font-size: var(--size-box1);
+}
+
+.box>p:nth-child(2) {
+    font-size: var(--size-box2);
+    font-weight: 600;
+}
+
+.box>p:nth-child(3) {
+    font-size: var(--size-box3);
+}
+
+.row-end>.box {
+    border-bottom: 1px solid black;
+}
+
+#ipa>.vowels>.left {
+    background-color: var(--color-vowels-title);
+}
+
+#ipa>.vowels>.right>.monophthongs {
+    background-color: var(--color-monophthongs);
+}
+
+#ipa>.vowels>.right>.dipthongs .box,
+#ipa>.vowels>.right>.dipthongs .row.title {
+    background-color: var(--color-dipthongs);
+}
+
+#ipa>.consonants .box,
+#ipa>.consonants>.left {
+    background-color: var(--color-consonants);
+}
+
+.content>.div1 {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.content>.div1>.ipa {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.content>.div1>.ipa span {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.content>.div2 {
+    margin-top: 20px;
+}
+
+.box:hover {
+    background-color: rgba(82, 155, 223, 0.5) !important;
+}
+
+.container .table{
+    width: 100% !important;
+    max-width: 100%;
+    overflow: hidden !important;
+    display: block;
+}
+
+.container .table #ipa{
+    min-width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 1050px) {
+    .container {
+        flex-direction: column;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .container>.content {
+        width: 100%;
+    }
+}
+
+.container .content {
+    min-height: 230px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(151, 151, 151, 0.4);
+    background-color: white;
+}
+
+.container .content>.div1>audio {
+    flex: 1;
+}
+
+
+
+/* common */

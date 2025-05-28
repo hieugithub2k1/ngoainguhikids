@@ -1,0 +1,20 @@
+RewriteEngine on
+
+RewriteCond %{THE_REQUEST} /index\.php [NC]
+RewriteRule ^(.*)index\.php$ / [L,R=301]
+
+# dành cho hosting
+#RewriteRule ^(.*)index\.php$ /$1 [L,R=301]
+
+# Chặn truy cập trực tiếp vào thư mục src
+RewriteRule ^src/ - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+ # chuyển hướng mọi yêu cầu về index
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+# nếu là src thì chuyển hướng vì src là thư mục có thật
+
+AddType application/javascript .js

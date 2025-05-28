@@ -1,0 +1,173 @@
+.dv-accounts-contents {
+    padding: 10px;
+}
+
+.dv-accounts-contents .dv-title-filter {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.dv-accounts-contents .dv-title-filter:not(:first-child) {
+    margin-top: 10px;
+}
+
+.dv-accounts-contents .dv-box {
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.dv-accounts-contents .dv-box-1>form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dv-accounts-contents .dv-box-1>form .form-group {
+    flex: 1 1 calc(100% / 4 - 10px);
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #ccc; */
+}
+
+.dv-accounts-contents .dv-box-1>form .form-group>label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.dv-accounts-contents .dv-box-1>form .form-group>select {
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dv-accounts-contents .dv-box-2>input {
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.dv-accounts-contents .dv-table-accounts {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 5px 0 rgb(218, 218, 218);
+}
+
+.dv-accounts-contents .dv-table-accounts th {
+    background-color: var(--mb-primary-color);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+.dv-accounts-contents .dv-table-accounts td {
+    padding: 10px;
+}
+
+.dv-accounts-contents .dv-table-accounts tr:nth-child(even) {
+    background-color: rgba(243, 243, 243, 0.5);
+}
+
+.dv-accounts-contents .dv-table-accounts th:first-child,
+.dv-accounts-contents .dv-table-accounts td:first-child {
+    text-align: center;
+    padding: 5px;
+}
+
+.dv-accounts-contents .dv-table-accounts td>input,
+.dv-accounts-contents .dv-table-accounts th>input {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    aspect-ratio: 1/1;
+    border: none;
+    outline: none;
+}
+
+.dv-accounts-contents .dv-box-3 .dv-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+.dv-accounts-contents .dv-box-3 .dv-actions .formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.dv-accounts-contents .dv-box-3 .dv-actions .formGroup>label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.dv-accounts-contents .dv-box-3 .dv-actions .formGroup>select {
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dv-accounts-contents .dv-table-accounts .dv-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dv-accounts-contents .dv-table-accounts .dv-profile>img {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dv-accounts-contents .dv-table-accounts .dv-profile>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dv-accounts-contents .dv-table-accounts .dv-profile>div>span:first-child {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.dv-accounts-contents .dv-pagination-account {
+    margin-top: 15px;
+}
+
+.dv-accounts-contents .dv-table-accounts .firstone>td>div,
+.dv-accounts-contents .dv-table-accounts .nodata>td>div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.dv-accounts-contents .dv-table-accounts .firstone>td>div>svg,
+.dv-accounts-contents .dv-table-accounts .nodata>td>div>svg {
+    width: 100px;
+    height: 100px;
+    fill: #6c63ff;
+}

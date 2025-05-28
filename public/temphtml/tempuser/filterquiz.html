@@ -1,0 +1,518 @@
+<style>
+    .dv-content {
+        padding: 10px;
+    }
+
+    .dv-content-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .dv-content-box {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .dv-content .dv-content-box.box1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 10px;
+    }
+
+    @media (max-width: 500px) {
+        .dv-content .dv-content-box.box1>* {
+            flex: 1 1 100%;
+        }
+    }
+
+    .dv-content .dv-content-box.box1 .twoSelection {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .dv-content .dv-content-box.box1 .form-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        gap: 5px;
+    }
+
+    @media (max-width: 500px) {
+        .dv-content .dv-content-box.box1 .twoSelection>* {
+            flex: 1 1 100%;
+        }
+    }
+
+
+    .dv-content .dv-content-box.box1 .form-group label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .dv-content .dv-content-box.box1 .form-group select {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+        background-color: white;
+    }
+
+    .dv-content .dv-content-box.box2 .totalQuizzes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        font-weight: bold;
+    }
+
+    /* test grid system */
+
+    .dv-content .dv-content-box.box2 .listQuizzes {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div {
+        padding: 10px;
+        border-radius: 5px;
+        background: url("public/img/default_class.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 5px #ccc;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>p {
+        font-size: 16px;
+        color: #333;
+        margin: 5px 0;
+        font-weight: bold;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>p>span {
+        font-weight: normal;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>p>span.null {
+        color: red;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>p>a {
+        display: inline-block;
+        background-color: rgba(25, 25, 255, 0.8);
+        color: white;
+        font-weight: normal;
+        padding: 3px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>p>a:hover {
+        background-color: rgba(17, 17, 196, 0.8);
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>.srore_v2 {
+        --mb-percent: 0%;
+        position: relative;
+        width: 100%;
+        background-color: rgb(237, 11, 11, 0.8);
+        font-size: 9px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        /* box-shadow: inset 0 0 15px #ccc; */
+        margin-top: 10px;
+        overflow: hidden;
+        z-index: 0;
+        height: 12px;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>.srore_v2::after {
+        content: attr(data-percent) '%';
+        position: relative;
+        z-index: 1;
+    }
+
+    .dv-content .dv-content-box.box2 .listQuizzes>div>.srore_v2>.progress_v2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--mb-percent);
+        background: green;
+        z-index: 0;
+    }
+
+    /* custom select option */
+
+    .custom-dropdown {
+        flex: 1;
+        position: relative;
+        width: 100%;
+    }
+
+    .dropdown-button {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        font-size: 16px;
+        text-align: left;
+        cursor: pointer;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        padding-right: 25px !important;
+    }
+
+    .dropdown-button::after {
+        content: '\25BC';
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .dropdown-options {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        max-height: 400px;
+        overflow-y: auto;
+        display: none;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+    .dropdown-options.block {
+        display: block;
+    }
+
+    .dropdown-options li {
+        padding: 10px;
+        cursor: pointer;
+        white-space: normal;
+        border-top: 1px solid #ccc;
+    }
+    .dropdown-options li:first-child {
+        border-top: none;
+    }
+
+    .dropdown-options li:hover {
+        background-color: #eee;
+    }
+
+</style>
+
+<div class="dv-content">
+
+    <h4 class="dv-content-title">Quizzes</h4>
+    <div class="dv-content-box box1">
+        <div class="twoSelection">
+        <div class="form-group">
+            <label for="">Class</label>
+            <select name="" id="select-class" hidden>
+                <option value="" disabled selected>No Class</option>
+            </select>
+            <div class="custom-dropdown" id="idCustomSelectClass">
+                <button class="dropdown-button"></button>
+                <ul class="dropdown-options"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Unit</label>
+            <select name="" id="select-unit" hidden>
+                <option value="" disabled selected>No Unit</option>
+            </select>
+            <div class="custom-dropdown" id="idCustomSelectUnit">
+                <button class="dropdown-button"></button>
+                <ul class="dropdown-options"></ul>
+            </div>
+        </div>
+    </div>
+        <button class="btn btn-primary" id="btn-filter-quiz">Show Result</button>
+    </div>
+
+
+
+    <div class="dv-content-box box2">
+        <div class="totalQuizzes">
+            <span>Total quizzes:</span>
+            <span id="mb-totalQuizzes">0</span>
+        </div>
+
+        <div class="listQuizzes" id="mb-listQuizzes">
+
+            <!-- <div>
+                <p>Class: <span>K198</span></p>
+                <p>Unit: <span>Unit 1</span></p>
+                <p>Quiz: <a href="#">Quiz 1</a></p>
+                <p>Score: <span>9/10</span></p>
+                <p><a href="#">History</a></p>
+                <div class="srore_v2" style="--mb-percent: 0%" data-percent="0">
+                    <div class="progress_v2"></div>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module">
+    import { mbNotification, mbConfirm, mbLoading, mbFetch, mbPagination, mbFormData } from './public/js/allmodule.js';
+
+    const divRoot = document.getElementById('root');
+    // divRoot.innerHTML = '';
+
+    // variable global
+
+    let flagFilter = false;
+
+    const dataPage = {
+        idClass: null,
+        idLesson: null,
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let idClass = urlParams.get('class');
+    let idLesson = urlParams.get('lesson');
+    if (!isNaN(idClass)) {
+        dataPage.idClass = idClass;
+    }
+    if (!isNaN(idLesson)) {
+        dataPage.idLesson = idLesson;
+    }
+    function updateURL() {
+        let url = window.location.origin + window.location.pathname;
+        if (dataPage.idClass !== null && dataPage.idLesson !== null) {
+            url += '?class=' + dataPage.idClass + '&lesson=' + dataPage.idLesson;
+            window.history.replaceState({}, '', url);
+        }
+    }
+
+    // lấy danh sách class của 1 người dùng
+
+    (async () => {
+        const loading = document.querySelector('.dv-content-box.box1');
+        const idCustomSelectClass = document.getElementById('idCustomSelectClass');
+        const customOption = idCustomSelectClass.querySelector('.dropdown-options');
+        try {
+            mbLoading(true, loading);
+            const dataClass = await mbFetch('quizzes/getClassByUser');
+            if (dataClass.length === 0) {
+                const dropdownButton = idCustomSelectClass.querySelector('.dropdown-button');
+                dropdownButton.innerText = 'No Class';
+                mbNotification('Info', 'No Class',4,4);
+                return;
+            }
+
+            emptyElement(customOption);
+            dataClass.forEach(item => {
+                const option = document.createElement('li');
+                option.setAttribute('data-value', item.idClass);
+                option.innerText = item.className;
+                customOption.appendChild(option);
+            });
+
+            if (dataClass.length === 1) {
+                getUnitByClass(dataClass[0].idClass);
+                dataPage.idClass = dataClass[0].idClass;
+            } else {
+                if (dataPage.idClass !== null) {
+                    getUnitByClass(dataPage.idClass);
+                } else {
+                    getUnitByClass(dataClass[0].idClass);
+                    dataPage.idClass = dataClass[0].idClass;
+                }
+            }
+
+            customSelect('idCustomSelectClass', function (value) {
+                dataPage.idClass = value;
+                dataPage.idLesson = null;
+                getUnitByClass(value);
+            }, dataPage.idClass);
+
+        } catch (e) {
+            console.log(e);
+        } finally {
+            mbLoading(false, loading);
+        }
+    })();
+
+    async function getUnitByClass(idClass) {
+        const idCustomSelectUnit = document.getElementById('idCustomSelectUnit');
+        const selectUnit = idCustomSelectUnit.querySelector('.dropdown-button');
+        const customOption = idCustomSelectUnit.querySelector('.dropdown-options');
+        const loading = document.querySelector('.dv-content-box.box1');
+        try {
+            mbLoading(true, loading);
+            const dataUnit = await mbFetch('admin/quizzes/getUnitByClass/' + idClass);
+            emptyElement(selectUnit);
+
+            if (dataUnit.length === 0) {
+                const dropdownButton = idCustomSelectUnit.querySelector('.dropdown-button');
+                dropdownButton.innerText = 'No Unit';
+                mbNotification('Info', 'No Unit',4,4);
+                return;
+            }
+
+            emptyElement(customOption);
+            dataUnit.forEach(item => {
+                const option = document.createElement('li');
+                option.setAttribute('data-value', item.idLesson);
+                option.innerText = item.lessonName;
+                customOption.appendChild(option);
+            });
+
+            if (dataUnit.length === 1) {
+                getQuizByUnit(dataPage.idClass, dataUnit[0].idLesson);
+                dataPage.idLesson = dataUnit[0].idLesson;
+            } else {
+                if (dataPage.idLesson !== null) {
+                    getQuizByUnit(dataPage.idClass, dataPage.idLesson);
+                } else {
+                    getQuizByUnit(dataPage.idClass, dataUnit[0].idLesson);
+                    dataPage.idLesson = dataUnit[0].idLesson;
+                }
+            }
+
+            customSelect('idCustomSelectUnit', function (value) {
+                dataPage.idLesson = value;
+                flagFilter = true;
+            }, dataPage.idLesson);
+
+        } catch (e) {
+            console.log(e);
+        } finally {
+            mbLoading(false, loading);
+        }
+    }
+
+    // btn filter
+    (() => {
+
+        const btnFilterQuiz = document.getElementById('btn-filter-quiz');
+        btnFilterQuiz.addEventListener('click', function () {
+
+            if (dataPage.idClass === null || dataPage.idLesson === null) {
+                mbNotification('Warrning', 'Please select Class and Unit',3,1.5);
+                return;
+            }
+            if(!flagFilter){
+                return;
+            }
+            flagFilter = false;
+
+            updateURL();
+            getQuizByUnit(dataPage.idClass, dataPage.idLesson);
+        });
+
+    })();
+
+    async function getQuizByUnit(idClass, idUnit) {
+        const loading = document.querySelector('.dv-content-box.box2');
+        try {
+            mbLoading(true, loading);
+            const dataQuizzes = await mbFetch('admin/quizzes/getQuizByIdLesson/' + idClass + '/' + idUnit);
+            renderQuizzes(dataQuizzes);
+        } catch (e) {
+            console.log(e);
+        } finally {
+            mbLoading(false, loading);
+        }
+    }
+
+
+    function renderQuizzes(dataQuizzes) {
+
+        const EtotalQuiz = document.getElementById('mb-totalQuizzes');
+        const ElistQuiz = document.getElementById('mb-listQuizzes');
+        EtotalQuiz.innerText = dataQuizzes.length;
+        emptyElement(ElistQuiz);
+        dataQuizzes.forEach(item => {
+            ElistQuiz.appendChild(componentBoxQuiz(item));
+        });
+
+    }
+
+
+    function componentBoxQuiz(row) {
+        let scorePercent = 0;
+        if (row.score !== null) {
+            scorePercent = (row.score / 10) * 100;
+        }
+
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <p>Class: <span>${row.className}</span></p>
+        <p>Unit: <span>${row.lessonName}</span></p>
+        <p>Quiz: <a href="quizzes/startquiz?class=${row.idClass}&unit=${row.idLesson}&quiz=${row.idQuiz}">${row.quizName}</a></p>
+        <p>Score: <span class="${row.score === null ? 'null' : ''}">${row.score === null ? 'null' : row.score + '/10'}</span></p>
+        <div class="srore_v2" style="--mb-percent: ${scorePercent}%" data-percent="${scorePercent}">
+        <div class="progress_v2"></div>
+        </div>
+        `;
+        return div;
+    }
+
+
+    function emptyElement(element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+
+    function customSelect(idElement, callback, idSelected = null) {
+        
+        const idCustomSelect = document.getElementById(idElement);
+        if (idCustomSelect === null) {
+            return;
+        }
+        
+        const dropdownButton = idCustomSelect.querySelector('.dropdown-button');
+        const dropdownOptions = idCustomSelect.querySelector('.dropdown-options');
+        const options = idCustomSelect.querySelectorAll('.dropdown-options li');
+        dropdownButton.onclick = function () {
+            dropdownOptions.classList.toggle('block');
+        };
+        options.forEach(option => {
+            if (idSelected !== null && option.getAttribute('data-value') == idSelected) {
+                dropdownButton.innerText = option.innerText;
+            }
+            option.onclick = function (e) {
+                const value = option.getAttribute('data-value');
+                const text = option.innerText;
+                dropdownButton.innerText = text;
+                dropdownOptions.classList.remove('block');
+                callback(value);
+            };
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!dropdownButton.contains(event.target) && !dropdownOptions.contains(event.target)) {
+                dropdownOptions.classList.remove('block');
+            }
+        });
+    }
+
+</script>
