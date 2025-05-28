@@ -24,7 +24,7 @@ class QuizzesController
     function index()
     {
         $quiz = new ViewLayout();
-        $quiz->setTitle('Quizzes - Anh Ngữ MB');
+        $quiz->setTitle('Quizzes - Ngoại ngữ Hi Kids');
         $quiz->setActivePage(5);
         $quiz->addCSS($this->pathcss . 'filterquiz.css');
         $quiz->addJS($this->pathjs . 'filterquiz1.js');
@@ -33,7 +33,7 @@ class QuizzesController
 
     function startquiz(){
         $quiz = new ViewLayout();
-        $quiz->setTitle('Quizzes - Anh Ngữ MB');
+        $quiz->setTitle('Quizzes - Ngoại ngữ Hi Kids');
         $quiz->setActivePage(5);
         $quiz->addCSS($this->pathcss . 'quiz2.css');
         $quiz->addCSS($this->pathcssall . 'quill.css');

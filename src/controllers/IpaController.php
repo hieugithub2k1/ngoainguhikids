@@ -7,7 +7,7 @@ class IpaController{
 
     function index(){
         $ipa = new \Views\ViewLayout(); 
-        $ipa->setTitle('IPA - Anh Ngữ BM');
+        $ipa->setTitle('IPA - Ngoại ngữ Hi Kids');
         $ipa->setActivePage(4);
         $ipa->addCSS('public/css/Users/ipa.css');
         $ipa->addJS($this->pathjs . 'ipa.js');

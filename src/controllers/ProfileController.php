@@ -14,7 +14,7 @@ class ProfileController
     function index()
     {
         $profile = new ViewLayout();
-        $profile->setTitle('Profile - Anh Ngữ MB');
+        $profile->setTitle('Profile - Ngoại ngữ Hi Kids');
         $profile->setActivePage(4);
         $profile->addCSS('public/css/Admin/profileAdmin.css');
         $profile->addJS('public/js/Admin/ProfileAdmin.js');

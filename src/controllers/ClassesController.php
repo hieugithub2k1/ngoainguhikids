@@ -18,7 +18,7 @@ class ClassesController
 
     public function index()
     {
-        $this->layout->setTitle('Classes - AnhNguMB');
+        $this->layout->setTitle('Classes - Ngoại ngữ Hi Kids');
         $this->layout->setActivePage(2,2);
         $this->layout->addCSS($this->pathcss . 'joinclass.css');
         $this->layout->addJS($this->pathjs . 'joinclass1.js');
@@ -26,7 +26,7 @@ class ClassesController
     }
 
     public function myclass(){
-        $this->layout->setTitle('My Classes - AnhNguMB');
+        $this->layout->setTitle('My Classes - Ngoại ngữ Hi Kids');
         $this->layout->setActivePage(2,2.1);
         $this->layout->addCSS($this->pathcss . 'myclass.css');
         $this->layout->addJS($this->pathjs . 'myclass.js');
@@ -34,7 +34,7 @@ class ClassesController
     }
 
     public function progress(){
-        $this->layout->setTitle('Progress - AnhNguMB');
+        $this->layout->setTitle('Progress - Ngoại ngữ Hi Kids');
         $this->layout->setActivePage(2);
         $this->layout->addCSS($this->pathcss . 'progress.css');
         $this->layout->addJS($this->pathjs . 'progress.js');

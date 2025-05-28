@@ -35,7 +35,7 @@ class LoginController
     function index()
     {
         $login = new \Views\viewsAuth\ViewLogin();
-        $login->setTitle("Login - Anh ngữ MB");
+        $login->setTitle("Login - Ngoại ngữ Hi Kids");
         $login->addCSS("public/css/login.css");
         $login->addJS("public/js/login.js");
         $login->render();
