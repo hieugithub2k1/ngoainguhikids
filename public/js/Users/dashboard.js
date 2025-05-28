@@ -12,7 +12,7 @@
     const templateroot = `
         <div class="dv-content">
         
-            <h3 class="dv-content-title">Anh Ngữ MB - Đà Nẵng</h3>
+            <h3 class="dv-content-title">Ngoại ngữ Hi Kids</h3>
             <div class="dv-content-box box1">
                 <div class="left">
                     <h4>Hi <span id="userNameDashboard" data-value="hehe"></span></h4>
