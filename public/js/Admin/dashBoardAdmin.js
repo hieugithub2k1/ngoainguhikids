@@ -12,11 +12,11 @@ const divRoot = document.getElementById("root");
 const templateroot = `
 <div class="dv-content">
 
-    <h3 class="dv-content-title">Anh Ngữ MB - Đà Nẵng</h3>
+    <h3 class="dv-content-title">Ngoại Ngữ Hi Kids </h3>
     <div class="dv-content-box box1">
         <div class="left">
             <h4>Hi <span id="userNameDashboard" data-value="hehe"></span></h4>
-            <p>Welcome to the English MB quiz page</p>
+            <p>Welcome to the English Hi Kids quiz page</p>
         </div>
         <div class="right">
             <img src="public/img/dashboard.png" alt="">
