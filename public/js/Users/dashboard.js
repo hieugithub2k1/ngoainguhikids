@@ -16,7 +16,7 @@
             <div class="dv-content-box box1">
                 <div class="left">
                     <h4>Hi <span id="userNameDashboard" data-value="hehe"></span></h4>
-                    <p>Welcome to the English MB quiz page</p>
+                    <p>Ready to challenge yourself? Let's start your quiz journey at Hi Kids!</p>
                 </div>
                 <div class="right">
                     <img src="public/img/dashboard.png" alt="">
