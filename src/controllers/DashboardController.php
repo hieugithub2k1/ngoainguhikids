@@ -11,7 +11,7 @@ class DashboardController{
     }
     function index(){
         $dashboard = new \Views\ViewLayout(); 
-        $dashboard->setTitle('Dashboard - Anh Ngữ BM');
+        $dashboard->setTitle('Dashboard - Ngoại ngữ Hi Kids');
         $dashboard->setActivePage(1);
         $dashboard->addCSS('public/css/Admin/dashboardAdmin.css');
         $dashboard->addJS($this->pathjs . 'dashboard.js');

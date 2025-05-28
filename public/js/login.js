@@ -186,7 +186,7 @@ function removeTokensFromUrl() {
 }
 
 function linkGoogle(){
-    const clientId = '865532873608-aik1oar7v5gimbu4m84dcl2aj8me92ih.apps.googleusercontent.com';
+    const clientId = '408238500348-7lmup6d6njjja0lglkhv6934pbtpnfee.apps.googleusercontent.com';
     const client_Uri = document.querySelector('base').href;
     const scope = 'openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile';
     const nonce = Math.random().toString(36).substring(2); // Tạo nonce ngẫu nhiên
